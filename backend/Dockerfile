@@ -13,13 +13,17 @@ FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
-COPY package*.json ./
-# tsx is needed at runtime (dev script), so install all deps
-RUN npm ci
+# 1. Install tsx globally
+RUN npm install -g tsx
 
-COPY --from=builder /app/src ./src
-COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+COPY package*.json ./
+# 2. Install production dependencies
+RUN npm ci --omit=dev
+
+# 3. Copy everything from builder (Fixes the Prisma error cleanly)
+COPY --from=builder /app /app
 
 EXPOSE 5000
 
-CMD ["npm", "run", "start"]
+# 4. Use npx to force Node to look at the global tsx binary path
+CMD ["npx", "tsx", "src/index.ts"]

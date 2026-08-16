@@ -1,0 +1,99 @@
+ Image docker-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 572B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 577B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 73B done
+#4 DONE 0.0s
+
+#5 [builder 1/6] FROM docker.io/library/node:22-alpine@sha256:c610fcdfb1d5b4740dd70c284ed3cb16bb857e0f7166196e36a5501df7a3aa32
+#5 resolve docker.io/library/node:22-alpine@sha256:c610fcdfb1d5b4740dd70c284ed3cb16bb857e0f7166196e36a5501df7a3aa32 0.0s done
+#5 DONE 0.0s
+
+#6 [builder 2/6] WORKDIR /app
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 9.80kB done
+#7 DONE 0.0s
+
+#8 [builder 3/6] COPY package*.json ./
+#8 DONE 0.0s
+
+#9 [runner 4/6] RUN npm ci
+#9 ...
+
+#10 [builder 4/6] RUN npm ci
+#10 ...
+
+#9 [runner 4/6] RUN npm ci
+#9 66.04 
+#9 66.04 added 225 packages, and audited 226 packages in 1m
+#9 66.04 
+#9 66.04 41 packages are looking for funding
+#9 66.04   run `npm fund` for details
+#9 66.04 
+#9 66.04 found 0 vulnerabilities
+#9 66.04 npm notice
+#9 66.04 npm notice New major version of npm available! 10.9.8 -> 12.0.2
+#9 66.04 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+#9 66.04 npm notice To update run: npm install -g npm@12.0.2
+#9 66.04 npm notice
+#9 DONE 66.1s
+
+#10 [builder 4/6] RUN npm ci
+#10 69.83 
+#10 69.83 added 239 packages, and audited 240 packages in 1m
+#10 69.83 
+#10 69.83 41 packages are looking for funding
+#10 69.83   run `npm fund` for details
+#10 69.83 
+#10 69.83 found 0 vulnerabilities
+#10 69.83 npm notice
+#10 69.83 npm notice New major version of npm available! 10.9.8 -> 12.0.2
+#10 69.83 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+#10 69.83 npm notice To update run: npm install -g npm@12.0.2
+#10 69.83 npm notice
+#10 DONE 69.9s
+
+#11 [builder 5/6] COPY . .
+#11 DONE 0.1s
+
+#12 [builder 6/6] RUN npx prisma generate
+#12 1.174 Loaded Prisma config from prisma.config.ts.
+#12 1.174 
+#12 1.272 Prisma schema loaded from src/db/prisma/schema.prisma.
+#12 1.331 
+#12 1.331 ✔ Generated Prisma Client (7.9.1) to ./src/db/generated/prisma in 32ms
+#12 1.331 
+#12 DONE 1.4s
+
+#13 [runner 5/6] COPY --from=builder /app/src ./src
+#13 DONE 0.1s
+
+#14 [runner 6/6] COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+#14 DONE 0.0s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 13.3s done
+#15 exporting manifest sha256:f9f6d92c020464d2792d9920a2f794797c107c56b77a1d4cc43ce31622cc2903 done
+#15 exporting config sha256:ffbca4367c54cddcc006e4caa6416a4d76d0bba475eeb13440d1352610a32c1c done
+#15 exporting attestation manifest sha256:015acd4d43e552aa04efbf597684cc09c62c342b45f6f5e69271e2009b0e5e9a 0.0s done
+#15 exporting manifest list sha256:6224d2f2438b211fc3a26795ac5e5477a11ba14061a23df8433e1a9142ba9248 done
+#15 naming to docker.io/library/docker-backend:latest done
+#15 unpacking to docker.io/library/docker-backend:latest
+#15 unpacking to docker.io/library/docker-backend:latest 2.3s done
+#15 DONE 15.7s
+
+#16 resolving provenance for metadata file
+#16 DONE 0.0s
+ Image docker-backend Built 
