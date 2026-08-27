@@ -15,8 +15,8 @@ export const getUsers = async (_req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const { name, email } = req.body;
-    const user = await prisma.user.create({ data: { name, email } });
+    const { mobileNumber, email } = req.body;
+    const user = await prisma.user.create({ data: { mobileNumber, email } });
     res.status(201).json(user);
   } catch (err) {
     res.status(500).json({ error: errorMessage(err) });

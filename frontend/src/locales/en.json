@@ -1,0 +1,106 @@
+{
+  "app": {
+    "name": "Bank Sahayak"
+  },
+  "language": {
+    "title": "Choose your language",
+    "select": "Choose a language",
+    "ok": "OK",
+    "chosen": "You have chosen {{language}}",
+    "changeHint": "If you want to change the language, please choose from the options below."
+  },
+  "greeting": {
+    "welcome": "Welcome to Bank Sahayak",
+    "subtitle": "Your trusted banking assistant",
+    "continue": "Get Started",
+    "namaste": "Namaste"
+  },
+  "auth": {
+    "signup": "Sign Up",
+    "login": "Log In",
+    "mobileNumber": "Mobile Number",
+    "email": "Email Address",
+    "password": "Password",
+    "submit": "Submit",
+    "welcome": "Welcome back!",
+    "newUser": "New here? Sign up with your mobile number."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "expenseRecord": "Expense Record",
+    "expenseDesc": "Track money lent to friends",
+    "loan": "Loan",
+    "loanDesc": "Apply for a loan",
+    "contactBank": "Contact Bank",
+    "contactDesc": "Connect with bank support",
+    "wallet": "Wallet",
+    "walletDesc": "Manage your digital wallet",
+    "kyc": "KYC Verification",
+    "kycDesc": "Complete your identity verification",
+    "comingSoon": "Coming Soon"
+  },
+  "kyc": {
+    "title": "KYC Verification",
+    "hireAssistant": "Hire an Assistant",
+    "hireAssistantDesc": "A bank agent will help you complete KYC over a phone call",
+    "doItYourself": "Do it Yourself",
+    "doItYourselfDesc": "Upload your Aadhar card photo yourself",
+    "uploadAadhar": "Upload Aadhar Card Photo",
+    "uploadHint": "Take a clear photo of your Aadhar card",
+    "submit": "Submit Request",
+    "status": "Your KYC Status: {{status}}",
+    "pending": "Pending",
+    "inReview": "In Review",
+    "verified": "Verified",
+    "rejected": "Rejected",
+    "mobileHint": "Enter your mobile number",
+    "requestSubmitted": "KYC request submitted successfully!"
+  },
+  "expenses": {
+    "title": "Expense Record",
+    "addFriend": "Add Friend",
+    "friendPhone": "Friend's Phone Number",
+    "addExpense": "Add Expense",
+    "amount": "Amount (₹)",
+    "description": "Description",
+    "lentTo": "Lent to {{name}}",
+    "noFriends": "No friends added yet",
+    "noExpenses": "No expenses recorded yet",
+    "friendAdded": "Friend added successfully!",
+    "expenseAdded": "Expense added! Email notification sent.",
+    "friends": "My Friends",
+    "expenses": "Expenses"
+  },
+  "team": {
+    "title": "Team Dashboard",
+    "liveRequests": "Live Requests",
+    "myAccepted": "My Accepted",
+    "reviewQueue": "Review Queue",
+    "accept": "Accept",
+    "reject": "Reject",
+    "verify": "Verify",
+    "uploadAndVerify": "Upload & Verify",
+    "noRequests": "No requests available",
+    "requestAccepted": "Request accepted!",
+    "requestRejected": "Request rejected",
+    "requestVerified": "Request verified!"
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "activities": "Activity Feed",
+    "teamStats": "Team Stats",
+    "allRequests": "All KYC Requests",
+    "noActivity": "No activity yet"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "currency": "₹"
+  }
+}

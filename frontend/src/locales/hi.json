@@ -1,0 +1,106 @@
+{
+  "app": {
+    "name": "बैंक सहायक"
+  },
+  "language": {
+    "title": "अपनी भाषा चुनें",
+    "select": "भाषा चुनें",
+    "ok": "ठीक है",
+    "chosen": "आपने {{language}} चुनी है",
+    "changeHint": "अगर आप भाषा बदलना चाहते हैं, तो कृपया नीचे दिए गए विकल्प में से चुनें।"
+  },
+  "greeting": {
+    "welcome": "बैंक सहायक में आपका स्वागत है",
+    "subtitle": "आपका विश्वसनीय बैंकिंग सहायक",
+    "continue": "शुरू करें",
+    "namaste": "नमस्ते"
+  },
+  "auth": {
+    "signup": "साइन अप",
+    "login": "लॉग इन",
+    "mobileNumber": "मोबाइल नंबर",
+    "email": "ईमेल पता",
+    "password": "पासवर्ड",
+    "submit": "जमा करें",
+    "welcome": "वापसी पर स्वागत है!",
+    "newUser": "यहाँ नए हैं? अपने मोबाइल नंबर से साइन अप करें।"
+  },
+  "dashboard": {
+    "title": "डैशबोर्ड",
+    "expenseRecord": "खर्च रिकॉर्ड",
+    "expenseDesc": "दोस्तों को उधार दिए पैसे ट्रैक करें",
+    "loan": "लोन",
+    "loanDesc": "लोन के लिए आवेदन करें",
+    "contactBank": "बैंक से संपर्क",
+    "contactDesc": "बैंक सहायता से जुड़ें",
+    "wallet": "वॉलेट",
+    "walletDesc": "अपना डिजिटल वॉलेट प्रबंधित करें",
+    "kyc": "KYC सत्यापन",
+    "kycDesc": "अपनी पहचान सत्यापन पूरा करें",
+    "comingSoon": "जल्द आ रहा है"
+  },
+  "kyc": {
+    "title": "KYC सत्यापन",
+    "hireAssistant": "सहायक किराए पर लें",
+    "hireAssistantDesc": "एक बैंक एजेंट फोन कॉल पर KYC पूरा करने में आपकी मदद करेगा",
+    "doItYourself": "खुद करें",
+    "doItYourselfDesc": "अपना आधार कार्ड फोटो खुद अपलोड करें",
+    "uploadAadhar": "आधार कार्ड फोटो अपलोड करें",
+    "uploadHint": "अपने आधार कार्ड की स्पष्ट फोटो लें",
+    "submit": "अनुरोध जमा करें",
+    "status": "आपकी KYC स्थिति: {{status}}",
+    "pending": "लंबित",
+    "inReview": "समीक्षा में",
+    "verified": "सत्यापित",
+    "rejected": "अस्वीकृत",
+    "mobileHint": "अपना मोबाइल नंबर दर्ज करें",
+    "requestSubmitted": "KYC अनुरोध सफलतापूर्वक जमा हो गया!"
+  },
+  "expenses": {
+    "title": "खर्च रिकॉर्ड",
+    "addFriend": "दोस्त जोड़ें",
+    "friendPhone": "दोस्त का फोन नंबर",
+    "addExpense": "खर्च जोड़ें",
+    "amount": "राशि (₹)",
+    "description": "विवरण",
+    "lentTo": "{{name}} को उधार दिया",
+    "noFriends": "अभी तक कोई दोस्त नहीं जोड़ा",
+    "noExpenses": "अभी तक कोई खर्च दर्ज नहीं",
+    "friendAdded": "दोस्त सफलतापूर्वक जोड़ा गया!",
+    "expenseAdded": "खर्च जोड़ा गया! ईमेल सूचना भेजी गई।",
+    "friends": "मेरे दोस्त",
+    "expenses": "खर्च"
+  },
+  "team": {
+    "title": "टीम डैशबोर्ड",
+    "liveRequests": "लाइव अनुरोध",
+    "myAccepted": "मेरे स्वीकृत",
+    "reviewQueue": "समीक्षा कतार",
+    "accept": "स्वीकार करें",
+    "reject": "अस्वीकार करें",
+    "verify": "सत्यापित करें",
+    "uploadAndVerify": "अपलोड और सत्यापित करें",
+    "noRequests": "कोई अनुरोध उपलब्ध नहीं",
+    "requestAccepted": "अनुरोध स्वीकार किया गया!",
+    "requestRejected": "अनुरोध अस्वीकार किया गया",
+    "requestVerified": "अनुरोध सत्यापित किया गया!"
+  },
+  "admin": {
+    "title": "एडमिन डैशबोर्ड",
+    "activities": "गतिविधि फ़ीड",
+    "teamStats": "टीम आंकड़े",
+    "allRequests": "सभी KYC अनुरोध",
+    "noActivity": "अभी तक कोई गतिविधि नहीं"
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "कुछ गलत हो गया",
+    "retry": "पुनः प्रयास करें",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "back": "वापस",
+    "next": "अगला",
+    "currency": "₹"
+  }
+}
