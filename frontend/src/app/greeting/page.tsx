@@ -16,23 +16,20 @@ export default function GreetingPage() {
   useEffect(() => {
     // Speak the greeting when the page loads
     if (currentLanguage) {
-      speak(t("greeting.namaste"), currentLanguage.code);
+      speak(currentLanguage.greeting, currentLanguage.code);
     }
-  }, [currentLanguage, speak, t]);
+  }, [currentLanguage, speak]);
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
       <div className="flex flex-col items-center gap-8 px-8 text-center">
-        <h1
-          className="text-6xl font-bold text-white drop-shadow-lg md:text-8xl"
-          style={{ animation: "float 3s ease-in-out infinite" }}
-        >
-          {t("greeting.namaste")}
-        </h1>
+        <h1 className="text-6xl font-bold text-white drop-shadow-lg md:text-8xl" >
+          {currentLanguage?.greeting || "Hello"}
+         </h1> 
 
-        <p className="text-xl text-white/80 md:text-2xl">
+         <p className="text-xl text-white/80 md:text-2xl">
           {t("greeting.welcome")}
-        </p>
+        </p> 
 
         <p className="text-lg text-white/60">{t("greeting.subtitle")}</p>
 
@@ -56,28 +53,6 @@ export default function GreetingPage() {
           {t("greeting.continue")}
         </Button>
       </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-
-        @keyframes pulse {
-          0%,
-          100% {
-            opacity: 0.3;
-          }
-          50% {
-            opacity: 1;
-          }
-        }
-      `}</style>
     </main>
   );
 }

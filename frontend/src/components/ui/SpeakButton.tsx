@@ -1,6 +1,8 @@
 "use client";
 
 import { speak } from "@/lib/speech";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
 
 interface SpeakButtonProps {
   /** The phrase to speak out loud */
@@ -18,6 +20,27 @@ export default function SpeakButton({
   ariaLabel,
   className,
 }: SpeakButtonProps) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Slow "breathing" pulse: the one continuous motion on the page, so a
+  // first-time user can tell this button is alive and tappable.
+  useEffect(() => {
+    const button = buttonRef.current;
+    if (!button) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const tween = gsap.to(button, {
+      scale: 1.05,
+      duration: 0.75,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+    });
+    return () => {
+      tween.kill();
+    };
+  }, []);
+
   const handleSpeak = () => {
     console.log(`[SpeakButton] click — langCode="${langCode}", phrase="${phrase}"`);
     speak(phrase, langCode);
@@ -25,6 +48,7 @@ export default function SpeakButton({
 
   return (
     <button
+      ref={buttonRef}
       type="button"
       onClick={handleSpeak}
       aria-label={ariaLabel}
