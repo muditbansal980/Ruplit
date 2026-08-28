@@ -15,7 +15,7 @@ export default function RoleRoute({ children, allowedRoles }: RoleRouteProps) {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      router.push("/");
+      router.push("/select-language");
       return;
     }
 

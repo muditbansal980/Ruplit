@@ -18,7 +18,7 @@ export default function ProtectedRoute({
 
   useEffect(() => {
     if (!isAuthenticated) {
-      router.push("/");
+      router.push("/select-language");
       return;
     }
 
