@@ -42,7 +42,7 @@ export const env = {
     return process.env.BREVO_API_KEY!;
   },
   get EMAIL_FROM() {
-    return process.env.EMAIL_FROM || "noreply@banksahayak.com";
+    return process.env.EMAIL_FROM || "muditban2008@gmail.com";
   },
   get CLOUDINARY_CLOUD_NAME() {
     return process.env.CLOUDINARY_CLOUD_NAME!;

@@ -23,7 +23,6 @@ export default function ProtectedRoute({
     }
 
     if (requiredRole && role !== requiredRole) {
-      // Redirect to appropriate dashboard based on role
       if (role === "ADMIN") router.push("/admin");
       else if (role === "TEAM") router.push("/team");
       else router.push("/dashboard");

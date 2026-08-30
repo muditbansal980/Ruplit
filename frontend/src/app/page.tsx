@@ -6,20 +6,23 @@ import { LandingFooter } from "@/components/landing/LandingFooter";
 import { LandingNav } from "@/components/landing/LandingNav";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { TrustSection } from "@/components/landing/TrustSection";
+import LandingGuard from "@/components/landing/LandingGuard";
 
 export default function LandingPage() {
   return (
-    <div className="bg-mist text-ink">
-      <LandingNav />
-      <main>
-        <Hero />
-        <ProblemSection />
-        <HowItWorks />
-        <FeaturesSection />
-        <TrustSection />
-        <CtaSection />
-      </main>
-      <LandingFooter />
-    </div>
+    <LandingGuard>
+      <div className="bg-mist text-ink">
+        <LandingNav />
+        <main>
+          <Hero />
+          <ProblemSection />
+          <HowItWorks />
+          <FeaturesSection />
+          <TrustSection />
+          <CtaSection />
+        </main>
+        <LandingFooter />
+      </div>
+    </LandingGuard>
   );
 }

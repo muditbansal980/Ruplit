@@ -12,7 +12,7 @@ async function main() {
   console.log("🌱 Seeding database...\n");
 
   // Seed Admin
-  const adminEmail = process.env.ADMIN_SEED_EMAIL || "admin@banksahayak.com";
+  const adminEmail = process.env.ADMIN_SEED_EMAIL || "muditbanl2008@gmail.com";
   const adminPassword = process.env.ADMIN_SEED_PASSWORD || "admin123";
   const adminHash = await bcrypt.hash(adminPassword, 10);
 
@@ -28,7 +28,7 @@ async function main() {
   console.log(`✅ Admin: ${admin.email} (password: ${adminPassword})`);
 
   // Seed Team Members
-  const teamEmail = process.env.TEAM_SEED_EMAIL || "team1@banksahayak.com";
+  const teamEmail = process.env.TEAM_SEED_EMAIL || "asnipz404@gmail.com";
   const teamPassword = process.env.TEAM_SEED_PASSWORD || "team123";
   const teamHash = await bcrypt.hash(teamPassword, 10);
 

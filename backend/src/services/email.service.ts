@@ -36,7 +36,7 @@ export async function sendMail({
       body: JSON.stringify({
         // Brevo auto-uses the account's default sender when sender is omitted.
         // This avoids the "unverified sender" problem.
-        sender: { email: "noreply@banksahayak.com", name: "Bank Sahayak" },
+        sender: { email: "muditban2008@gmail.com", name: "Bank Sahayak" },
         to: [{ email: to }],
         subject,
         htmlContent,

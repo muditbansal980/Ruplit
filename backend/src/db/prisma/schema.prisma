@@ -118,6 +118,19 @@ model KycRequest {
   @@map("kyc_requests")
 }
 
+model OtpToken {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  purpose   String   // "signup" | "login"
+  used      Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email, purpose])
+  @@map("otp_tokens")
+}
+
 model Activity {
   id        String   @id @default(cuid())
   type      String   // e.g. "signup", "kyc_status_change", "expense_created"

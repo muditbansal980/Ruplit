@@ -2,6 +2,7 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { setAuthCookie, removeAuthCookie } from "@/lib/cookieAuth";
 
 type Role = "USER" | "TEAM" | "ADMIN";
 
@@ -31,17 +32,25 @@ export const useAuthStore = create<AuthState>()(
       token: null,
       isAuthenticated: false,
 
-      loginAsUser: (user, token) =>
-        set({ user, token, isAuthenticated: true }),
+      loginAsUser: (user, token) => {
+        setAuthCookie(token);
+        set({ user, token, isAuthenticated: true });
+      },
 
-      loginAsTeam: (user, token) =>
-        set({ user: user ? { ...user, role: "TEAM" as Role } : null, token, isAuthenticated: true }),
+      loginAsTeam: (user, token) => {
+        setAuthCookie(token);
+        set({ user: user ? { ...user, role: "TEAM" as Role } : null, token, isAuthenticated: true });
+      },
 
-      loginAsAdmin: (user, token) =>
-        set({ user: user ? { ...user, role: "ADMIN" as Role } : null, token, isAuthenticated: true }),
+      loginAsAdmin: (user, token) => {
+        setAuthCookie(token);
+        set({ user: user ? { ...user, role: "ADMIN" as Role } : null, token, isAuthenticated: true });
+      },
 
-      logout: () =>
-        set({ user: null, token: null, isAuthenticated: false }),
+      logout: () => {
+        removeAuthCookie();
+        set({ user: null, token: null, isAuthenticated: false });
+      },
 
       setUser: (user) => set({ user }),
     }),

@@ -38,6 +38,16 @@ export interface MeResponse {
 }
 
 export const authApi = {
+  sendOtp: async (email: string, purpose: string = "signup"): Promise<{ message: string }> => {
+    const { data } = await apiClient.post("/auth/send-otp", { email, purpose });
+    return data;
+  },
+
+  verifyOtp: async (email: string, code: string, purpose: string = "signup"): Promise<{ verified: boolean }> => {
+    const { data } = await apiClient.post("/auth/verify-otp", { email, code, purpose });
+    return data;
+  },
+
   signup: async (mobileNumber: string, email: string): Promise<SignupResponse> => {
     const { data } = await apiClient.post("/auth/signup", { mobileNumber, email });
     return data;

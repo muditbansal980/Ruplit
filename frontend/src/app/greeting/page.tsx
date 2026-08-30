@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useSpeak } from "@/hooks/useSpeak";
+import { useAuth } from "@/hooks/useAuth";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +13,16 @@ export default function GreetingPage() {
   const { t } = useTranslation();
   const { language, currentLanguage } = useLanguage();
   const { speak } = useSpeak();
+  const { isAuthenticated, role } = useAuth();
+
+  // Redirect authenticated users to their dashboard
+  useEffect(() => {
+    if (isAuthenticated) {
+      if (role === "ADMIN") router.replace("/admin");
+      else if (role === "TEAM") router.replace("/team");
+      else router.replace("/dashboard");
+    }
+  }, [isAuthenticated, role, router]);
 
   useEffect(() => {
     // Speak the greeting when the page loads
