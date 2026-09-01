@@ -109,7 +109,15 @@
     "activities": "செயல்பாட்டு ஊட்டம்",
     "teamStats": "குழு புள்ளிவிவரங்கள்",
     "allRequests": "அனைத்து KYC கோரிக்கைகள்",
-    "noActivity": "இன்னும் செயல்பாடு இல்லை"
+    "noActivity": "இன்னும் செயல்பாடு இல்லை",
+    "sidebar": {
+      "overview": "கண்ணோட்டம்",
+      "users": "பயனர்கள்",
+      "transactions": "பரிவர்த்தனைகள்",
+      "addMember": "உறுப்பினரைச் சேர்",
+      "kycRequests": "KYC கோரிக்கைகள்",
+      "activityLog": "செயல்பாட்டு பதிவு"
+    }
   },
   "common": {
     "loading": "ஏற்றுகிறது...",
@@ -120,6 +128,17 @@
     "delete": "நீக்கு",
     "back": "பின்செல்",
     "next": "அடுத்து",
-    "currency": "₹"
+    "currency": "₹",
+    "logout": "வெளியேறு",
+    "logoutConfirmTitle": "வெளியேற்றத்தை உறுதிப்படுத்து",
+    "logoutConfirmMessage": "நீங்கள் நிச்சயமாக வெளியேற விரும்புகிறீர்களா?",
+    "confirm": "உறுதிப்படுத்து"
+  },
+  "settings": {
+    "title": "அமைப்புகள்",
+    "profile": "சுயவிவரம்",
+    "profileDesc": "உங்கள் கணக்குத் தகவல்",
+    "language": "மொழி",
+    "languageDesc": "உங்கள் விருப்பமான மொழியை மாற்று"
   }
 }

@@ -16,6 +16,8 @@ import { ArrowLeft, UserPlus, Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/routes/ProtectedRoute";
 import { toast } from "sonner";
+import { useRegisterPage } from "@/hooks/useRegisterPage";
+import { useRegisterField } from "@/hooks/useRegisterField";
 
 const friendSchema = z.object({
   phoneNumber: z.string().min(10, "Enter a valid phone number"),
@@ -33,6 +35,18 @@ function ExpensesContent() {
   const addFriend = useAddFriend();
   const addExpense = useAddExpense();
   const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+
+  useRegisterPage({
+    route: "/dashboard/expenses",
+    title: "Expense Record",
+    description:
+      "A page for recording money lent to or borrowed from friends. The user can add friends by phone number, then log an expense (amount and description) against a selected friend. Use this page when the user wants to track loans, lending, borrowing, or money given to someone.",
+  });
+
+  // Register form fields so the agent can highlight/fill them.
+  const phoneFieldRef = useRegisterField({ id: "friend-phone", label: "Friend's phone number", type: "tel", required: true });
+  const amountFieldRef = useRegisterField({ id: "amount", label: "Amount", type: "number", required: true });
+  const descriptionFieldRef = useRegisterField({ id: "description", label: "Description", type: "text", required: true });
 
   const friendForm = useForm<z.infer<typeof friendSchema>>({
     resolver: zodResolver(friendSchema),
@@ -90,6 +104,11 @@ function ExpensesContent() {
                   <Input
                     placeholder={t("expenses.friendPhone")}
                     {...friendForm.register("phoneNumber")}
+                    ref={(node) => {
+                      phoneFieldRef(node);
+                      const { ref: rhfRef } = friendForm.register("phoneNumber");
+                      if (typeof rhfRef === "function") rhfRef(node);
+                    }}
                     className="flex-1"
                   />
                   <Button type="submit" disabled={addFriend.isPending}>
@@ -167,6 +186,11 @@ function ExpensesContent() {
                       step="0.01"
                       placeholder="0.00"
                       {...expenseForm.register("amount")}
+                      ref={(node) => {
+                        amountFieldRef(node);
+                        const { ref: rhfRef } = expenseForm.register("amount");
+                        if (typeof rhfRef === "function") rhfRef(node);
+                      }}
                     />
                     {expenseForm.formState.errors.amount && (
                       <p className="text-sm text-red-500">
@@ -180,6 +204,11 @@ function ExpensesContent() {
                     <Input
                       placeholder="What was this expense for?"
                       {...expenseForm.register("description")}
+                      ref={(node) => {
+                        descriptionFieldRef(node);
+                        const { ref: rhfRef } = expenseForm.register("description");
+                        if (typeof rhfRef === "function") rhfRef(node);
+                      }}
                     />
                     {expenseForm.formState.errors.description && (
                       <p className="text-sm text-red-500">

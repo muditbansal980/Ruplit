@@ -15,6 +15,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Check, X, Upload } from "lucide-react";
 import RoleRoute from "@/routes/RoleRoute";
 import { useSocket } from "@/hooks/useSocket";
+// import Navbar from "@/components/common/Navbar";
 
 function TeamDashboardContent() {
   const { t } = useTranslation();
@@ -103,8 +104,9 @@ function TeamDashboardContent() {
   );
 
   return (
-    <main className="min-h-screen p-8">
-      <div className="mx-auto max-w-4xl">
+    <main className="min-h-screen">
+      {/* <Navbar /> */}
+      <div className="mx-auto max-w-4xl p-8">
         <h1 className="mb-8 text-3xl font-bold">{t("team.title")}</h1>
 
         <Tabs defaultValue="live">

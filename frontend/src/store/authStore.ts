@@ -16,6 +16,7 @@ interface AuthState {
   } | null;
   token: string | null;
   isAuthenticated: boolean;
+  _hasHydrated: boolean;
 
   // Actions
   loginAsUser: (user: AuthState["user"], token: string) => void;
@@ -23,6 +24,7 @@ interface AuthState {
   loginAsAdmin: (user: AuthState["user"], token: string) => void;
   logout: () => void;
   setUser: (user: AuthState["user"]) => void;
+  setHasHydrated: (v: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -31,6 +33,9 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isAuthenticated: false,
+      _hasHydrated: false,
+
+      setHasHydrated: (v) => set({ _hasHydrated: v }),
 
       loginAsUser: (user, token) => {
         setAuthCookie(token);
@@ -56,6 +61,13 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: "banksahayak-auth",
+      onRehydrateStorage: () => {
+        return (state, error) => {
+          if (!error) {
+            state?.setHasHydrated(true);
+          }
+        };
+      },
     }
   )
 );

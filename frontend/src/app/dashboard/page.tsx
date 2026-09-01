@@ -6,20 +6,22 @@ import { useAuth } from "@/hooks/useAuth";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Receipt,
-  Landmark,
-  Phone,
-  Wallet,
-  ShieldCheck,
-  LogOut,
-} from "lucide-react";
+import { Receipt, Landmark, Phone, Wallet, ShieldCheck } from "lucide-react";
 import ProtectedRoute from "@/routes/ProtectedRoute";
+import Navbar from "@/components/common/Navbar";
+import { useRegisterPage } from "@/hooks/useRegisterPage";
 
 function DashboardContent() {
   const router = useRouter();
   const { t } = useTranslation();
   const { user, logout } = useAuth();
+
+  useRegisterPage({
+    route: "/dashboard",
+    title: "Dashboard",
+    description:
+      "The main hub where a logged-in user sees all available banking features: expense recording, loan tracking, bank contact, and wallet. From here the user can navigate to any feature page or start KYC verification.",
+  });
 
   const features = [
     {
@@ -57,20 +59,15 @@ function DashboardContent() {
   ];
 
   return (
-    <main className="min-h-screen p-8">
-      <div className="mx-auto max-w-4xl">
+    <main className="min-h-screen">
+      <Navbar />
+      <div className="mx-auto max-w-4xl p-8">
         {/* Header */}
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold">{t("dashboard.title")}</h1>
-            <p className="text-zinc-500">
-              {user?.mobileNumber || user?.email}
-            </p>
-          </div>
-          <Button variant="outline" onClick={logout}>
-            <LogOut className="mr-2 h-4 w-4" />
-            {t("common.back")}
-          </Button>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold">{t("dashboard.title")}</h1>
+          <p className="text-zinc-500">
+            {user?.mobileNumber || user?.email}
+          </p>
         </div>
 
         {/* Feature Grid */}

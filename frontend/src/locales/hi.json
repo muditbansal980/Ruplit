@@ -109,7 +109,15 @@
     "activities": "गतिविधि फ़ीड",
     "teamStats": "टीम आंकड़े",
     "allRequests": "सभी KYC अनुरोध",
-    "noActivity": "अभी तक कोई गतिविधि नहीं"
+    "noActivity": "अभी तक कोई गतिविधि नहीं",
+    "sidebar": {
+      "overview": "अवलोकन",
+      "users": "उपयोगकर्ता",
+      "transactions": "लेनदेन",
+      "addMember": "सदस्य जोड़ें",
+      "kycRequests": "KYC अनुरोध",
+      "activityLog": "गतिविधि लॉग"
+    }
   },
   "common": {
     "loading": "लोड हो रहा है...",
@@ -120,6 +128,17 @@
     "delete": "हटाएं",
     "back": "वापस",
     "next": "अगला",
-    "currency": "₹"
+    "currency": "₹",
+    "logout": "लॉग आउट",
+    "logoutConfirmTitle": "लॉग आउट की पुष्टि करें",
+    "logoutConfirmMessage": "क्या आप वाकई लॉग आउट करना चाहते हैं?",
+    "confirm": "पुष्टि करें"
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "profile": "प्रोफ़ाइल",
+    "profileDesc": "आपकी खाता जानकारी",
+    "language": "भाषा",
+    "languageDesc": "अपनी पसंदीदा भाषा बदलें"
   }
 }

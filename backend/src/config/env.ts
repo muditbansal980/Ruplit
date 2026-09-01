@@ -10,6 +10,7 @@ const required = [
   "CLOUDINARY_CLOUD_NAME",
   "CLOUDINARY_API_KEY",
   "CLOUDINARY_API_SECRET",
+  "GROQ_API_KEY",
 ] as const;
 
 export function validateEnv(): void {
@@ -55,5 +56,8 @@ export const env = {
   },
   get MAX_UPLOAD_SIZE_MB() {
     return Number(process.env.MAX_UPLOAD_SIZE_MB) || 5;
+  },
+  get GROQ_API_KEY() {
+    return process.env.GROQ_API_KEY!;
   },
 };

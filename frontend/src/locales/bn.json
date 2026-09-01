@@ -109,7 +109,15 @@
     "activities": "কার্যকলাপ ফিড",
     "teamStats": "টিম পরিসংখ্যান",
     "allRequests": "সমস্ত KYC অনুরোধ",
-    "noActivity": "এখনো কোনো কার্যকলাপ নেই"
+    "noActivity": "এখনো কোনো কার্যকলাপ নেই",
+    "sidebar": {
+      "overview": "সারসংক্ষেপ",
+      "users": "ব্যবহারকারী",
+      "transactions": "লেনদেন",
+      "addMember": "সদস্য যোগ করুন",
+      "kycRequests": "KYC অনুরোধ",
+      "activityLog": "কার্যকলাপ লগ"
+    }
   },
   "common": {
     "loading": "লোড হচ্ছে...",
@@ -120,6 +128,17 @@
     "delete": "মুছুন",
     "back": "পেছনে",
     "next": "পরবর্তী",
-    "currency": "₹"
+    "currency": "₹",
+    "logout": "লগ আউট",
+    "logoutConfirmTitle": "লগ আউট নিশ্চিত করুন",
+    "logoutConfirmMessage": "আপনি কি সত্যিই লগ আউট করতে চান?",
+    "confirm": "নিশ্চিত করুন"
+  },
+  "settings": {
+    "title": "সেটিংস",
+    "profile": "প্রোফাইল",
+    "profileDesc": "আপনার অ্যাকাউন্ট তথ্য",
+    "language": "ভাষা",
+    "languageDesc": "আপনার পছন্দের ভাষা পরিবর্তন করুন"
   }
 }

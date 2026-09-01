@@ -2,6 +2,8 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
+import AgentPanel from "@/components/agent/AgentPanel";
+import AgentRegistryDebug from "@/components/AgentRegistryDebug";
 import { useState } from "react";
 import { initI18n } from "@/lib/i18n";
 
@@ -34,6 +36,8 @@ export function Providers({ children, initialLanguage }: ProvidersProps) {
     <QueryClientProvider client={queryClient}>
       {children}
       <Toaster position="top-right" richColors />
+      <AgentPanel />
+      <AgentRegistryDebug />
     </QueryClientProvider>
   );
 }

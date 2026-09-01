@@ -13,12 +13,15 @@ export default function ProtectedRoute({
   children,
   requiredRole,
 }: ProtectedRouteProps) {
-  const { isAuthenticated, role } = useAuth();
+  const { isAuthenticated, hasHydrated, role } = useAuth();
   const router = useRouter();
 
+  // Wait for Zustand hydration before checking auth
   useEffect(() => {
+    if (!hasHydrated) return;
+
     if (!isAuthenticated) {
-      router.push("/select-language");
+      router.push("/signup");
       return;
     }
 
@@ -27,7 +30,16 @@ export default function ProtectedRoute({
       else if (role === "TEAM") router.push("/team");
       else router.push("/dashboard");
     }
-  }, [isAuthenticated, role, requiredRole, router]);
+  }, [hasHydrated, isAuthenticated, role, requiredRole, router]);
+
+  // Show loading while hydration is in progress
+  if (!hasHydrated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-zinc-500">Loading...</p>
+      </div>
+    );
+  }
 
   if (!isAuthenticated) {
     return (

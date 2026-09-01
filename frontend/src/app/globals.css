@@ -155,3 +155,23 @@
     }
   }
 }
+
+/* Agent field highlight — pulsing blue outline */
+.agent-highlight {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15);
+  animation: agent-pulse 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes agent-pulse {
+  0%, 100% {
+    outline-color: #3b82f6;
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15);
+  }
+  50% {
+    outline-color: #60a5fa;
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0.08);
+  }
+}

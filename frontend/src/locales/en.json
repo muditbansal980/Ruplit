@@ -109,7 +109,15 @@
     "activities": "Activity Feed",
     "teamStats": "Team Stats",
     "allRequests": "All KYC Requests",
-    "noActivity": "No activity yet"
+    "noActivity": "No activity yet",
+    "sidebar": {
+      "overview": "Overview",
+      "users": "Users",
+      "transactions": "Transactions",
+      "addMember": "Add Member",
+      "kycRequests": "KYC Requests",
+      "activityLog": "Activity Log"
+    }
   },
   "common": {
     "loading": "Loading...",
@@ -120,6 +128,17 @@
     "delete": "Delete",
     "back": "Back",
     "next": "Next",
-    "currency": "₹"
+    "currency": "₹",
+    "logout": "Logout",
+    "logoutConfirmTitle": "Confirm Logout",
+    "logoutConfirmMessage": "Are you sure you want to logout?",
+    "confirm": "Confirm"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "profileDesc": "Your account information",
+    "language": "Language",
+    "languageDesc": "Change your preferred language"
   }
 }

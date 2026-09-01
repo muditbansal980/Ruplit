@@ -10,12 +10,15 @@ interface RoleRouteProps {
 }
 
 export default function RoleRoute({ children, allowedRoles }: RoleRouteProps) {
-  const { isAuthenticated, role } = useAuth();
+  const { isAuthenticated, hasHydrated, role } = useAuth();
   const router = useRouter();
 
+  // Wait for Zustand hydration before checking auth
   useEffect(() => {
+    if (!hasHydrated) return;
+
     if (!isAuthenticated) {
-      router.push("/select-language");
+      router.push("/signup");
       return;
     }
 
@@ -25,7 +28,16 @@ export default function RoleRoute({ children, allowedRoles }: RoleRouteProps) {
       else if (role === "TEAM") router.push("/team");
       else router.push("/dashboard");
     }
-  }, [isAuthenticated, role, allowedRoles, router]);
+  }, [hasHydrated, isAuthenticated, role, allowedRoles, router]);
+
+  // Show loading while hydration is in progress
+  if (!hasHydrated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-zinc-500">Loading...</p>
+      </div>
+    );
+  }
 
   if (!isAuthenticated) {
     return (
