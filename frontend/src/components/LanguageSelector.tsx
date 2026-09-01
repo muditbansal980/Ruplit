@@ -2,42 +2,37 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LANGUAGES, type Language } from "@/data/languages";
-import { detectSystemLanguage } from "@/lib/detectSystemLanguage";
 import { speak } from "@/lib/speech";
-import { useAppStore } from "@/store/useAppStore";
+import { useLanguage } from "@/hooks/useLanguage";
 import LanguageDropdown from "./ui/LanguageDropdown";
 import LanguageCard from "./ui/LanguageCard";
 import OkButton from "./ui/OkButton";
 import SpeakButton from "./ui/SpeakButton";
 
 export default function LanguageSelector() {
-  const { selectedLanguageCode, setSelectedLanguage } = useAppStore();
+  const { language: selectedLanguageCode, setLanguage: setSelectedLanguage } = useLanguage();
   const [confirmedLanguage, setConfirmedLanguage] = useState<Language | null>(null);
   const [showArrow, setShowArrow] = useState(false);
 
   // Guards against the effect running twice in dev (React StrictMode).
   const introSpoken = useRef(false);
 
-  // On first load: detect the system language, select it, announce in that
-  // language that it can be changed from the dropdown, and point an arrow
-  // at the dropdown.
-  useEffect(() => {
-    if (introSpoken.current) return;
-    introSpoken.current = true;
-
-    const detected = detectSystemLanguage();
-    console.log(
-      `[LanguageSelector] mount — system language detected as "${detected.code}" (${detected.name})`
-    );
-    setSelectedLanguage(detected.code);
-    setShowArrow(true);
-    speak(detected.changePhrase, detected.code);
-  }, [setSelectedLanguage]);
-
   const selectedLanguage = useMemo(
     () => LANGUAGES.find((lang) => lang.code === selectedLanguageCode) ?? null,
     [selectedLanguageCode]
   );
+
+  // On first load: announce in the detected language that it can be
+  // changed, and point an arrow at the dropdown.
+  useEffect(() => {
+    if (introSpoken.current) return;
+    introSpoken.current = true;
+
+    setShowArrow(true);
+    if (selectedLanguage) {
+      speak(selectedLanguage.changePhrase, selectedLanguage.code);
+    }
+  }, [selectedLanguage]);
 
   /** Page title in the current UI language */
   const pageTitle = selectedLanguage?.nativeTitle ?? LANGUAGES[0].nativeTitle;

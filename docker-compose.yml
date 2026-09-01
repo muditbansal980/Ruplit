@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: banksahayak-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-banksahayak}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-banksahayak_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-banksahayak}
+    ports:
+      - "5435:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

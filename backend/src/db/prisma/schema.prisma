@@ -1,4 +1,4 @@
-// Prisma schema — https://pris.ly/d/prisma-schema
+// Prisma schema for Bank Sahayak
 // DB connection URL lives in backend/.env (DATABASE_URL) and prisma.config.ts
 
 generator client {
@@ -10,12 +10,134 @@ datasource db {
   provider = "postgresql"
 }
 
+// ── Enums ────────────────────────────────────────────────
+
+enum Role {
+  USER
+  TEAM
+  ADMIN
+}
+
+enum KycMode {
+  ASSISTED
+  SELF
+}
+
+enum KycStatus {
+  PENDING     // assisted request, unclaimed
+  IN_REVIEW   // self-upload awaiting team review; or assisted claimed & in progress
+  VERIFIED
+  REJECTED
+}
+
+// ── Models ───────────────────────────────────────────────
+
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                String    @id @default(cuid())
+  mobileNumber      String    @unique
+  email             String?   @unique
+  preferredLanguage String    @default("en-IN")
+  kycStatus         KycStatus @default(PENDING)
+  role              Role      @default(USER)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  friendships       Friendship[] @relation("Owner")
+  friendOf          Friendship[] @relation("Friend")
+  lentExpenses      Expense[]    @relation("Lender")
+  borrowedExpenses  Expense[]    @relation("Borrower")
+  kycRequests       KycRequest[]
 
   @@map("users")
+}
+
+model TeamMember {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(TEAM)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  accepted     KycRequest[] @relation("AssignedTeamMember")
+
+  @@map("team_members")
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+
+  @@map("admins")
+}
+
+model Friendship {
+  id        String   @id @default(cuid())
+  ownerId   String
+  owner     User     @relation("Owner", fields: [ownerId], references: [id])
+  friendId  String
+  friend    User     @relation("Friend", fields: [friendId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([ownerId, friendId])
+  @@map("friendships")
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  lenderId    String
+  lender      User     @relation("Lender", fields: [lenderId], references: [id])
+  borrowerId  String
+  borrower    User     @relation("Borrower", fields: [borrowerId], references: [id])
+  amount      Decimal
+  description String
+  emailSent   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@map("expenses")
+}
+
+model KycRequest {
+  id                   String     @id @default(cuid())
+  userId               String?
+  user                 User?      @relation(fields: [userId], references: [id])
+  mobileNumber         String
+  mode                 KycMode
+  status               KycStatus  @default(PENDING)
+  aadharImageUrl       String?
+  assignedTeamMemberId String?
+  assignedTeamMember   TeamMember? @relation("AssignedTeamMember", fields: [assignedTeamMemberId], references: [id])
+  createdAt            DateTime   @default(now())
+  updatedAt            DateTime   @updatedAt
+
+  @@map("kyc_requests")
+}
+
+model OtpToken {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  purpose   String   // "signup" | "login"
+  used      Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email, purpose])
+  @@map("otp_tokens")
+}
+
+model Activity {
+  id        String   @id @default(cuid())
+  type      String   // e.g. "signup", "kyc_status_change", "expense_created"
+  actorId   String?  // userId, teamMemberId, or adminId
+  actorRole Role
+  details   Json?    // flexible payload
+  createdAt DateTime @default(now())
+
+  @@map("activities")
 }
